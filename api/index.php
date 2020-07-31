@@ -16,8 +16,10 @@ if(!array_key_exists($key, $result)){
 	die("");
 }
 
+echo $result;
+/*
 if(isset($index)){
 	echo $result[$key][$index];
 }else{
 	echo $result[key];
-}
+}*/
