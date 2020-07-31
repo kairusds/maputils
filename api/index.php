@@ -6,6 +6,7 @@ header("Content-Type: text/plain");
 $hash = $_GET["hash"];
 $key = $_GET["key"];
 $index = $_GET["index"];
+$innerkey = $_GET["innerkey"];
 if(!isset($hash) || !isset($key)){
 	die("");
 }
@@ -17,7 +18,8 @@ if(!array_key_exists($key, $result)){
 }
 
 if(isset($index)){
-	echo $result[$key][$index];
+	if(isset($innerkey)) exit($result[$key][$index][$innerkey]);
+	exit($result[$key][$index]);
 }else{
-	echo $result[$key];
+	exit($result[$key]);
 }
