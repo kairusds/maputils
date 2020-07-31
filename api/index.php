@@ -19,5 +19,5 @@ if(!array_key_exists($key, $result)){
 if(isset($index)){
 	echo $result[$key][$index];
 }else{
-	echo $result[key];
+	echo $result[$key];
 }
