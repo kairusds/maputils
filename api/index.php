@@ -11,15 +11,13 @@ if(!isset($hash) || !isset($key)){
 }
 
 $json = file_get_contents("https://bloodcat.com/osu/?mod=json&q=md5={$hash}");
-$result = json_decode($json, true);
+$result = json_decode($json, true)[0];
 if(!array_key_exists($key, $result)){
 	die("");
 }
 
-echo $result;
-/*
 if(isset($index)){
 	echo $result[$key][$index];
 }else{
 	echo $result[key];
-}*/
+}
