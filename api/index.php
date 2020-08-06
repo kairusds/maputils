@@ -19,9 +19,10 @@ if(isset($index)){
 	if(isset($innerkey)) exit($result[$key][$index][$innerkey]);
 	exit($result[$key][$index]);
 }elseif(isset($version) && $version == "hash"){
-	foreach($result["beatmaps"] as $bm){
-		if($bm["hash"] == $hash){
-			return $bm["id"];
+	$result1 = json_decode($json);
+	foreach($result1->beatmaps as $bm){
+		if($bm->hash == $hash){
+			return $bm->id;
 		}
 	}
 }elseif(isset($key)){
