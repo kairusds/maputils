@@ -19,7 +19,6 @@ if(isset($index)){
 	if(isset($innerkey)) exit($result[$key][$index][$innerkey]);
 	exit($result[$key][$index]);
 }elseif(isset($version) && $version == "hash"){
-	if(!is_array($result["beatmaps"])) var_dump($result["beatmaps"]);
 	foreach($result["beatmaps"] as $item){
 		if($item["hash"] == $hash){
 			exit($item["id"]);
