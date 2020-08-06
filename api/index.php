@@ -19,7 +19,11 @@ if(isset($index)){
 	if(isset($innerkey)) exit($result[$key][$index][$innerkey]);
 	exit($result[$key][$index]);
 }elseif(isset($version) && $version == "hash"){
-	return array_filter($result["beatmaps"], fn($v) => $v["hash_md5"] == $hash);
+	foreach($result["beatmaps"] as $bm){
+		if($bm["hash"] == $hash){
+			return $bm["id"];
+		}
+	}
 }elseif(isset($key)){
 	if(!array_key_exists($key, $result)) die("");
 	exit($result[$key]);
