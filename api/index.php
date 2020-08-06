@@ -7,6 +7,7 @@ $hash = $_GET["hash"];
 $key = $_GET["key"];
 $index = $_GET["index"];
 $innerkey = $_GET["innerkey"];
+$version = $_GET["diffhash"];
 if(!isset($hash) || !isset($key)){
 	die("");
 }
@@ -20,6 +21,8 @@ if(!array_key_exists($key, $result)){
 if(isset($index)){
 	if(isset($innerkey)) exit($result[$key][$index][$innerkey]);
 	exit($result[$key][$index]);
+}elseif(isset($diffhash)) {
+	return array_filter($result["beatmaps"], fn($v) => $v["hash_md5"] == $diffhash);
 }else{
 	exit($result[$key]);
 }
