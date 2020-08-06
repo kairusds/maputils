@@ -19,10 +19,10 @@ if(isset($index)){
 	if(isset($innerkey)) exit($result[$key][$index][$innerkey]);
 	exit($result[$key][$index]);
 }elseif(isset($version) && $version == "hash"){
-	$result1 = json_decode($json);
-	foreach($result1->beatmaps as $bm){
-		if($bm->hash == $hash){
-			return $bm->id;
+	if(!is_array($result["beatmaps"]) || !is_object($result["beatmaps"])) var_dump($result["beatmaps"]);
+	foreach($result["beatmaps"] as $item){
+		if($item["hash"] == $hash){
+			exit($item["id"]);
 		}
 	}
 }elseif(isset($key)){
