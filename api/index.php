@@ -20,11 +20,13 @@ if(isset($index)){
 	exit($result[$key][$index]);
 }elseif(isset($version) && $version == "hash"){
 	foreach($result["beatmaps"] as $item){
-		if($item["hash"] == $hash){
+		if($item["hash_md5"] == $hash){
 			exit($item["id"]);
 		}
 	}
 }elseif(isset($key)){
 	if(!array_key_exists($key, $result)) die("");
 	exit($result[$key]);
+}else{
+	die("");
 }
