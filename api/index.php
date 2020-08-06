@@ -27,6 +27,4 @@ if(isset($index)){
 }elseif(isset($key)){
 	if(!array_key_exists($key, $result)) die("");
 	exit($result[$key]);
-}else{
-	die("");
 }
