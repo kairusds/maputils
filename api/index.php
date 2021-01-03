@@ -13,8 +13,9 @@ if(!isset($key, $hash)){
 $json = file_get_contents("https://osu.ppy.sh/api/get_beatmaps?k={$key}&h={$hash}");
 $result = json_decode($json, true)[0];
 
+// beatmap 404
 if(empty($result)){
-	echo("-1");
+	echo("0");
 }
 
 // final check
