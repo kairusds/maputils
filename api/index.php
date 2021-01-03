@@ -3,18 +3,26 @@
 ini_set("allow_url_fopen", 1);
 header("Content-Type: text/plain");
 
-$hash = $_GET["hash"];
 $key = $_GET["key"];
-$index = $_GET["index"];
-$innerkey = $_GET["innerkey"];
-$version = $_GET["version"];
-if(!isset($hash)){
-	die("");
+$hash = $_GET["hash"];
+
+if(!isset($key, $hash)){
+	die(":/");
 }
 
-$json = file_get_contents("https://bloodcat.com/osu/?mod=json&q=md5={$hash}");
+$json = file_get_contents("https://osu.ppy.sh/api/get_beatmaps?k={$key}&h={$hash}");
 $result = json_decode($json, true)[0];
 
+if(empty($result)){
+	echo("-1");
+}
+
+// final check
+if($result["beatmap_id"]){
+	echo($result["beatmap_id"]);
+}
+
+/** RIP BLOODCAT
 if(isset($index)){
 	if(isset($innerkey)) exit($result[$key][$index][$innerkey]);
 	exit($result[$key][$index]);
@@ -30,3 +38,4 @@ if(isset($index)){
 }else{
 	die("");
 }
+**/ 
